@@ -34,7 +34,7 @@ def obter_clima(cidade):
 # Atualizar e exibir informações do clima
 def atualizar_clima():
     cidade = cidade_entry.get()
-    descricao, temperatura, umidade, vento = obter_clima
+    descricao, temperatura, umidade, vento = obter_clima(cidade)
 
     if descricao:
         clima_info.set(f"Localização {cidade}\n"
@@ -56,3 +56,29 @@ def atualizar_data_hora():
 # Configurações da interface gráfica
 root = tk.Tk()
 root.title("Aplicativo de Previsão do tempo")
+
+# Variavéis Tkinter para exibir as informações
+clima_info = tk.StringVar()
+data_hora = tk.StringVar()
+
+# Rótulo para exibição de data e hora
+data_hora_label = ttk.Label(root, textvariable=data_hora)
+data_hora_label.pack(pady=10)
+
+# Rótulo para exibição das informações do clima
+clima_info_label = ttk.Label(root, textvariable=clima_info, justify="left")
+clima_info_label.pack(pady=10)
+
+# Campo de texto para inserir nova locaçização
+cidade_entry = ttk.Entry(root, width=30)
+cidade_entry.pack(pady=10)
+
+# Botão para buscar informações do clima
+buscar_button = ttk.Button(root, text="Buscar Clima", command=atualizar_clima)
+buscar_button.pack(pady=10)
+
+# Atualiza a data e hora ao iniciar o aplicativo
+atualizar_data_hora()
+
+# Iniciar o loop principal do Tkinter
+root.mainloop()
