@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import datetime
-import pytz
-from winotify import Notification
 import tkinter as tk
 from tkinter import ttk
 from datetime import datetime
